@@ -1,0 +1,109 @@
+/* start */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto';
+    color: #333;
+}
+
+/* standards*/
+
+/* color */
+.white {
+    color: white;
+}
+
+.red {
+    color: rgb(250, 101, 85);
+}
+
+.blue {
+    color: blue;
+}
+
+.green {
+    color: green;
+}
+
+/* flex */
+.flex_c_c {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex_c {
+    display: flex;
+    justify-content: center;
+}
+
+.flex__c {
+    display: flex;
+    align-items: center;
+}
+
+/* buttons */
+
+/* header */
+
+.header-inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 600px;
+    background-color: rgb(250, 101, 85);
+    background-image: url('img/pokedex-background.png');
+    background-repeat: no-repeat;
+    background-image: url('img/pokedex-background.png');
+    background-position: right;
+    background-size: 80vh;
+    border-bottom-left-radius: 60px;
+    border-bottom-right-radius: 60px;
+}
+
+.input-container {
+    position: relative;
+    display: inline-block;
+    margin-top: 30px;
+}
+
+.search-input {
+    background-color: white;
+    border: 1px solid white;
+    border-color: white;
+    padding: 10px;
+    padding-left: 40px;
+    width: 400px;
+    height: 50px;
+    border-radius: 40px;
+    font-size: 16px;
+}
+
+.search-input:hover {
+    background-color: white;
+    border: 1px solid rgb(250, 101, 85);
+}
+
+.search-input:focus {
+    color: rgb(250, 101, 85);
+    outline: none;
+}
+
+
+.search-icon {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    width: 20px;
+    height: auto;
+}
+
+/* main */
+
+.main-headline {
+    margin-top: 30px;
+    padding-left: 40px;
+}

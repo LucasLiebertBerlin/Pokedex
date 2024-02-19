@@ -1,13 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pokedex</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="font.css" />
     <script src="script.js"></script>
-</head>
-<body onload="loadPokemon()">
-    
-</body>
+  </head>
+  <body onload="init()">
+    <!-- header -->
+    <header>
+      <div class="header-inner">
+        <div class="header-headline">
+          <h1 class="white">Welches Pokemon suchst du?</h1>
+        </div>
+
+        <div class="input-container">
+          <img src="img/search-icon.png" alt="Suchen" class="search-icon" />
+          <input
+            type="text"
+            placeholder="Suche ein Pokemon..."
+            class="search-input"
+          />
+        </div>
+      </div>
+    </header>
+    <!-- main -->
+    <h1 class="main-headline">Pokedex</h1>
+    <!-- main content -->
+    <div id="mainContentPokedex" class="main-content-pokedex">
+      <!-- generating content in here -->
+    </div>
+
+    <!-- end -->
+  </body>
 </html>
