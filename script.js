@@ -45,7 +45,9 @@ async function init() {
         'bug': 'green',
         'rock': 'grey',
         'ghost': 'purple',
-        'dragon': 'lightblue'
+        'dragon': 'lightblue',
+        'fairy': 'pink',
+        'dark': 'black'
     };
 
     // Festlegen der Farbe basierend auf dem ersten Pokémon-Typ
