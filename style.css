@@ -102,10 +102,19 @@
 }
 
 /* main */
-
+.main-wrapper {
+    background-image: url('img/pokedex-background-dark.png');
+    background-attachment: fixed;
+    /* background-size: contain; */
+    background-size: 800px;
+    background-repeat: no-repeat;
+    background-position: right;
+    background-position-y: -100px;
+}
 .main-headline {
-    margin-top: 30px;
+    padding-top: 30px;
     padding-left: 40px;
+    padding-bottom: 30px;
 }
 .main-content-pokedex {
     display: flex;
