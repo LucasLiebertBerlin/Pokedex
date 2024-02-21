@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="font.css" />
     <script src="script.js"></script>
   </head>
-  <body onload="init()">
+  <body id="body" onload="init()">
     <!-- header -->
     <header id="header">
       <div class="header-inner">
@@ -79,6 +79,7 @@
     <div id="selectedCardContainer" class="d-none">
       <!-- generate selected card in here -->
     </div>
+    <div onclick="closeSelectedCard()" id="closeSelectedCardBackgroundDiv" class="close-selected-card-background-div d-none"></div>
     <!-- end -->
   </body>
 </html>
