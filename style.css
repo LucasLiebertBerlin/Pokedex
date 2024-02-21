@@ -10,62 +10,73 @@
 
 /* standards*/
 .d-none {
-    /* display: none; */
+    display: none;
 }
+
 /* color */
 .grey {
-    background-color: rgb(153,163,172);
-    color: white; /* Weißer Text für bessere Lesbarkeit auf grauem Hintergrund */
+    background-color: rgb(153, 163, 172);
+    color: white;
+    /* Weißer Text für bessere Lesbarkeit auf grauem Hintergrund */
 }
 
 .red {
-    background-color: rgb(251,108,108);
-    color: white; /* Weißer Text für bessere Lesbarkeit auf rotem Hintergrund */
+    background-color: rgb(251, 108, 108);
+    color: white;
+    /* Weißer Text für bessere Lesbarkeit auf rotem Hintergrund */
 }
 
 .blue {
-    background-color: rgb(118,189,254);
-    color: white; /* Weißer Text für bessere Lesbarkeit auf blauem Hintergrund */
+    background-color: rgb(118, 189, 254);
+    color: white;
+    /* Weißer Text für bessere Lesbarkeit auf blauem Hintergrund */
 }
 
 .yellow {
-    background-color: rgb(255,216,111);
+    background-color: rgb(255, 216, 111);
 }
 
 .green {
-    background-color: rgb(44,218,177);
-    color: white; /* Weißer Text für bessere Lesbarkeit auf grünem Hintergrund */
+    background-color: rgb(44, 218, 177);
+    color: white;
+    /* Weißer Text für bessere Lesbarkeit auf grünem Hintergrund */
 }
 
 .lightblue {
-    background-color: rgb(90,206,231);
+    background-color: rgb(90, 206, 231);
 }
 
 .purple {
-    background-color: rgb(181,90,165);
-    color: white; /* Weißer Text für bessere Lesbarkeit auf lila Hintergrund */
+    background-color: rgb(181, 90, 165);
+    color: white;
+    /* Weißer Text für bessere Lesbarkeit auf lila Hintergrund */
 }
 
 .brown {
-    background-color: rgb(164,82,56);
-    color: white; /* Weißer Text für bessere Lesbarkeit auf braunem Hintergrund */
+    background-color: rgb(164, 82, 56);
+    color: white;
+    /* Weißer Text für bessere Lesbarkeit auf braunem Hintergrund */
 }
 
 .skyblue {
-    background-color: rgb(156,173,247);
+    background-color: rgb(156, 173, 247);
 }
 
 .pink {
-    background-color: rgb(230,165,230);
-    color: white; /* Weißer Text für bessere Lesbarkeit auf rosa Hintergrund */
+    background-color: rgb(230, 165, 230);
+    color: white;
+    /* Weißer Text für bessere Lesbarkeit auf rosa Hintergrund */
 }
+
 .white {
     color: white;
 }
+
 .black {
     background-color: #333;
-    color:#333;
+    color: #333;
 }
+
 /* flex */
 .flex_c_c {
     display: flex;
@@ -155,20 +166,23 @@
     align-items: center;
     flex-direction: column;
 }
+
 .main {
-    display:flex;
+    display: flex;
     width: 100%;
     max-width: 2000px;
     justify-content: center;
     flex-direction: column;
 
 }
+
 .main-headline {
     padding-top: 30px;
     padding-left: 40px;
     padding-bottom: 30px;
     color: #333;
 }
+
 .main-content-pokedex {
     display: flex;
     justify-content: center;
@@ -195,12 +209,15 @@
     transition: transform;
 
 }
+
 .pokemon-card:hover {
-   transform: scale(1.02); 
+    transform: scale(1.02);
 }
+
 .pokemon-card:hover .pokemon-card-image {
-    transform: scale(1.5); 
- }
+    transform: scale(1.5);
+}
+
 .pokemon-card-headline {
     padding-left: 30px;
     color: white;
@@ -216,7 +233,7 @@
 .pokemon-card-types-container {
     width: 50%;
     height: auto;
-    padding-left:30px;
+    padding-left: 30px;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -225,14 +242,15 @@
     color: white;
     padding-bottom: 5px;
 }
+
 .pokemon-card-type {
-  text-align: center;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-top: 1px;
-  padding-bottom: 1px;
-  border-radius: 20px;
-  background-color: rgba(255, 255, 255, 0.185);
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.185);
     margin-top: 5px;
 }
 
@@ -251,6 +269,7 @@
     height: 100%;
     transition: transform 0.5s ease, box-shadow 0.5s ease;
 }
+
 .pokemon-card-image:hover {
     transform: scale(1.5);
     /* box-shadow: #9ee5fa; */
@@ -261,13 +280,13 @@
     display: flex;
     justify-content: center;
     --color-text: #9ee5fa;
-    --color-background: rgb(250, 101, 85);;
+    --color-background: rgb(250, 101, 85);
     --color-outline: #9ee5fa80;
     --color-shadow: #00000080;
     padding-bottom: 30px;
-  }
-  
-  .btn-content {
+}
+
+.btn-content {
     display: flex;
     align-items: center;
     padding: 0px 3px;
@@ -280,88 +299,143 @@
     border-radius: 100px;
     box-shadow: 0 0 0.2em 0 var(--color-background);
     cursor: pointer;
-  }
-  
-  .btn-content:hover,
-  .btn-content:focus {
+}
+
+.btn-content:hover,
+.btn-content:focus {
     transition: 0.5s;
     -webkit-animation: btn-content 1s;
     animation: btn-content 1s;
     outline: 0.1em solid transparent;
     outline-offset: 0.2em;
     box-shadow: 0 0 0.4em 0 var(--color-background);
-  }
-  
-  .btn-content .icon-arrow {
+}
+
+.btn-content .icon-arrow {
     transition: 0.5s;
     margin-right: 0px;
     transform: scale(0.6);
-  }
-  
-  .btn-content:hover .icon-arrow {
+}
+
+.btn-content:hover .icon-arrow {
     transition: 0.5s;
     margin-right: 25px;
-  }
-  
-  .icon-arrow {
+}
+
+.icon-arrow {
     width: 20px;
     margin-left: 15px;
     position: relative;
     top: 6%;
-  }
-  
-  /* SVG */
-  #arrow-icon-one {
+}
+
+/* SVG */
+#arrow-icon-one {
     transition: 0.4s;
     transform: translateX(-60%);
-  }
-  
-  #arrow-icon-two {
+}
+
+#arrow-icon-two {
     transition: 0.5s;
     transform: translateX(-30%);
-  }
-  
-  .btn-content:hover #arrow-icon-three {
+}
+
+.btn-content:hover #arrow-icon-three {
     animation: color_anim 1s infinite 0.2s;
-  }
-  
-  .btn-content:hover #arrow-icon-one {
+}
+
+.btn-content:hover #arrow-icon-one {
     transform: translateX(0%);
     animation: color_anim 1s infinite 0.6s;
-  }
-  
-  .btn-content:hover #arrow-icon-two {
+}
+
+.btn-content:hover #arrow-icon-two {
     transform: translateX(0%);
     animation: color_anim 1s infinite 0.4s;
-  }
-  
-  /* SVG animations */
-  @keyframes color_anim {
+}
+
+/* SVG animations */
+@keyframes color_anim {
     0% {
-      fill: white;
+        fill: white;
     }
-  
+
     50% {
-      fill: var(--color-background);
+        fill: var(--color-background);
     }
-  
+
     100% {
-      fill: #9ee5fa;
+        fill: #9ee5fa;
     }
-  }
-  
-  /* Button animations */
-  @-webkit-keyframes btn-content {
+}
+
+/* Button animations */
+@-webkit-keyframes btn-content {
     0% {
-      outline: 0.2em solid var(--color-background);
-      outline-offset: 0;
+        outline: 0.2em solid var(--color-background);
+        outline-offset: 0;
     }
-  }
-  
-  @keyframes btn-content {
+}
+
+@keyframes btn-content {
     0% {
-      outline: 0.2em solid var(--color-background);
-      outline-offset: 0;
+        outline: 0.2em solid var(--color-background);
+        outline-offset: 0;
     }
-  }
-  
+}
+
+/* selected card */
+.selected-card {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* max-height: 800px;
+    max-width: 800px; */
+    max-height: 40%;
+    max-width: 40%;
+    /* background-color: rgb(250, 101, 85); */
+    border-radius: 40px;
+    border: 3px solid white;
+}
+.selected-card-headline {
+text-align: center;
+}
+.selected-card-main {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+.selected-card-close-button {
+    display: flex;
+    width: 100%;
+    padding-right: 20px;
+    padding-top: 10px;
+    justify-content: right;
+}
+.normal-button {
+    height: 50px;
+    width: 50px;
+}
+.selected-card-main-content-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+.selected-card-main-content img {
+height: 200px;
+width:200px;
+}
