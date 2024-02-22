@@ -2,6 +2,8 @@
 let start = 1;
 let end = 30;
 let pokemonArray = [];
+let currentChart;
+
   // Map, die die Farben für jeden Pokémon-Typ definiert
   let colorMap = {
     normal: "grey",
@@ -43,31 +45,45 @@ async function loadPokemon() {
 // Funktion zum Hinzufügen einer Pokémon-Karte zum Hauptcontainer
 async function addPokemonCard(pokemonIndex) {
   let pokemonData = await fetchPokemonData(pokemonIndex);
+  console.log('lol', pokemonData);
+  loadPokemonDataToPokemonArray(pokemonData);
+
+  let mainContentContainer = document.getElementById("mainContentPokedex");
+  mainContentContainer.innerHTML += createPokemonCard(pokemonIndex);
+}
+
+function loadPokemonDataToPokemonArray(pokemonData) {
   let pokemon = {
     name: pokemonData["species"]["name"],
     image: pokemonData["sprites"]["front_shiny"],
     types: pokemonData["types"],
+    abilities: pokemonData['abilities'],
+    weight: pokemonData['weight'],
+    stats: pokemonData['stats'],
   };
   pokemonArray.push(pokemon);
-  let mainContentContainer = document.getElementById("mainContentPokedex");
-  mainContentContainer.innerHTML += createPokemonCard(pokemon.name, pokemon.image, pokemon.types, pokemonIndex);
 }
 
 // Funktion zum Abrufen von Pokémon-Daten von der API
 async function fetchPokemonData(pokemonId) {
   let url = "https://pokeapi.co/api/v2/pokemon/" + pokemonId;
   let response = await fetch(url);
-  console.log('fetch', response);
   return await response.json();
 }
 
 // Funktion zum Generieren des HTML-Codes für die Pokémon-Karten
-function createPokemonCard(pokemonName, pokemonImage, types, pokemonIndex) {
-  let typesHtml = generatePokemonCardTypesHtml(types);
+function createPokemonCard(pokemonIndex) {
 
+  let pokemonName = pokemonArray[pokemonIndex - 1]['name'];
+
+  let pokemonImage = pokemonArray[pokemonIndex - 1]['image'];
+  let pokemonTypes = pokemonArray[pokemonIndex - 1]['types'];
+  
+  let typesHtml = generatePokemonCardTypesHtml(pokemonTypes);
 
   // Festlegen der Farbe basierend auf dem ersten Pokémon-Typ
-  let cardColor = colorMap[types[0]["type"]["name"]] || "";
+  let cardColor = colorMap[pokemonTypes[0]["type"]["name"]] || "";
+
   return /*html*/ `
   <div onclick="openSelectedCard(${pokemonIndex})" id="pokemonCard${pokemonIndex}" class="pokemon-card ${cardColor}">
       <div class="pokemon-card-headline-name">
@@ -97,22 +113,24 @@ function generatePokemonCardTypesHtml(types) {
 }
 
 function openSelectedCard(pokemonIndex) {
-
+  
   let selectedPokemonName = pokemonArray[pokemonIndex - 1]['name']; // -1 Da Arrays bei 0 beginnen
   let selectedPokemonImage = pokemonArray[pokemonIndex -1]['image']; // -1 Da Arrays bei 0 beginnen
   let selectedPokemonTypes = pokemonArray[pokemonIndex -1]['types']; // -1 Da Arrays bei 0 beginnen
+  
   let SelectedPokemonCardColor = colorMap[selectedPokemonTypes[0]["type"]["name"]] || "";
   let typesHtml = generatePokemonCardTypesHtml(selectedPokemonTypes);
 
-  console.log('name', selectedPokemonTypes);
 
   let backgroundCloseDiv = document.getElementById('closeSelectedCardBackgroundDiv');
   backgroundCloseDiv.classList.remove('d-none');
   let selectedCardContainer = document.getElementById('selectedCardContainer');
   selectedCardContainer.classList.remove('d-none');
+
+
+
   selectedCardContainer.innerHTML = ``;
   selectedCardContainer.innerHTML = /*html*/`
-    
   <div class="selected-card ${SelectedPokemonCardColor}">
     <div class="selected-card-close-button">
         <img onclick="closeSelectedCard()" class="normal-button" src="/img/close-button.png" alt="">
@@ -131,6 +149,11 @@ function openSelectedCard(pokemonIndex) {
             ${typesHtml}
           </div>
         </div>
+        <div class="selected-card-main-chart">
+        <div class="selected-card-chart-wrapper">
+  <canvas class="selected-card-chart" id="myChart" width="500" height="400"></canvas>
+</div>
+        </div>
     </div>
     <img onclick="openSelectedCard(${pokemonIndex +1})"  class="normal-button" src="/img/forward-button.png" alt="">
   </div>
@@ -138,6 +161,91 @@ function openSelectedCard(pokemonIndex) {
 
 let body = document.getElementById('body');
   body.style.overflow = 'hidden';
+
+  
+const ctx = document.getElementById('myChart');
+const baseStat1 = pokemonArray[pokemonIndex]['stats'][0]['base_stat'];
+console.log(pokemonArray[29]['stats'][0]['base_stat']);
+const baseStat2 = pokemonArray[pokemonIndex]['stats'][1]['base_stat'];
+const baseStat3 = pokemonArray[pokemonIndex]['stats'][2]['base_stat'];
+const baseStat4 = pokemonArray[pokemonIndex]['stats'][3]['base_stat'];
+const baseStat5 = pokemonArray[pokemonIndex]['stats'][4]['base_stat'];
+const baseStat6 = pokemonArray[pokemonIndex]['stats'][5]['base_stat'];
+const baseStatsNames1 = pokemonArray[pokemonIndex]['stats'][0]['stat']['name'];
+const baseStatsNames2 = pokemonArray[pokemonIndex]['stats'][1]['stat']['name'];
+const baseStatsNames3 = pokemonArray[pokemonIndex]['stats'][2]['stat']['name'];
+const baseStatsNames4 = pokemonArray[pokemonIndex]['stats'][3]['stat']['name'];
+const baseStatsNames5 = pokemonArray[pokemonIndex]['stats'][4]['stat']['name'];
+const baseStatsNames6 = pokemonArray[pokemonIndex]['stats'][5]['stat']['name'];
+
+currentChart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+      labels: [baseStatsNames1, baseStatsNames2, baseStatsNames3, baseStatsNames4, baseStatsNames5, baseStatsNames6],
+      datasets: [{
+          label: 'stats',
+          backgroundColor: "rgba(159,170,174,0.8)",
+          borderWidth: 1,
+          hoverBackgroundColor: "rgba(232,105,90,0.8)",
+          hoverBorderColor: "orange",
+          scaleStepWidth: 1,
+          data: [baseStat1, baseStat2, baseStat3, baseStat4, baseStat5, baseStat6],
+          backgroundColor: [
+              'rgb(255, 99, 132)',
+              'rgb(255, 159, 64)',
+              'rgb(255, 205, 86)',
+              'rgb(75, 192, 192)',
+              'rgb(54, 162, 235)',
+              'rgb(153, 102, 255)',
+              'rgb(201, 203, 207)'
+          ],
+          borderColor: [
+              'rgb(255, 99, 132)',
+              'rgb(255, 159, 64)',
+              'rgb(255, 205, 86)',
+              'rgb(75, 192, 192)',
+              'rgb(54, 162, 235)',
+              'rgb(153, 102, 255)',
+              'rgb(201, 203, 207)'
+          ],
+          borderWidth: 1
+      }]
+  },
+
+  options: {
+      scales: {
+          x: {
+              ticks: {
+                  color: 'white', // Schriftfarbe der x-Achsenbeschriftungen auf Weiß setzen
+                  font: {
+                      size: 20 // Schriftgröße der x-Achsenbeschriftungen auf 20 Pixel setzen
+                  }
+              }
+          },
+          y: {
+              ticks: {
+                  color: 'white', // Schriftfarbe der y-Achsenbeschriftungen auf Weiß setzen
+                  font: {
+                      size: 30 // Schriftgröße der y-Achsenbeschriftungen auf 30 Pixel setzen
+                  }
+              },
+              beginAtZero: true
+          }
+      },
+      plugins: {
+          legend: {
+              labels: {
+                  font: {
+                      size: 30, // Schriftgröße der Legendenlabels auf 30 Pixel setzen
+                      color: 'white' // Schriftfarbe der Legendenlabels auf Weiß setzen
+                  },
+                  color: 'white' // Schriftfarbe des Labels "stats" auf Weiß setzen
+              }
+          }
+      }
+  }
+});
+
 }
 
 function closeSelectedCard() {
@@ -167,3 +275,5 @@ async function loadMorePokemon() {
   start = newStart;
   end = newEnd;
 }
+
+
