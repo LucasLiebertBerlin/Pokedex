@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="font.css" />
     <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-
   </head>
   <body id="body" onload="init()">
     <!-- header -->
@@ -22,6 +21,8 @@
         <div class="input-container">
           <img src="img/search-icon.png" alt="Suchen" class="search-icon" />
           <input
+            oninput="searchInAllPokemons()"
+            id="searchInput"
             type="text"
             placeholder="Suche ein Pokemon..."
             class="search-input"
@@ -81,7 +82,11 @@
     <div id="selectedCardContainer" class="d-none">
       <!-- generate selected card in here -->
     </div>
-    <div onclick="closeSelectedCard()" id="closeSelectedCardBackgroundDiv" class="close-selected-card-background-div d-none"></div>
+    <div
+      onclick="closeSelectedCard()"
+      id="closeSelectedCardBackgroundDiv"
+      class="close-selected-card-background-div d-none"
+    ></div>
     <!-- end -->
   </body>
 </html>
